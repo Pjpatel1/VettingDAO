@@ -1,8 +1,8 @@
 
 import './App.css';
-import {Route, Routes, BrowserRouter} from 'react-router-dom';
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import './App.css';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Mainpage from './components/main';
 import './components/main.css';
 import './components/stars.css';
@@ -11,7 +11,7 @@ import './components/Style.css';
 import Request from './components/Request';
 import Member from './components/Member';
 import Upload from './components/upload';
-import Navigation from './components/navigation';
+import Navigation from './components/Navigation';
 import JsonData from "./data/data.json";
 import { Intercom, Window, Launcher } from '@relaycc/receiver';
 
@@ -21,36 +21,36 @@ function App() {
     setLandingPageData(JsonData);
   }, []);
   return (
-      <div>
-        
-         <BrowserRouter>
-              <Routes>
+    <div>
 
-                  <Route exact path='/' element={<Mainpage />}>
-                  </Route>
+      <BrowserRouter>
+        <Routes>
 
-                  <Route exact path='/dash' element={<Dashboard />}>
-                  </Route>
+          <Route exact path='/' element={<Mainpage />}>
+          </Route>
 
-                  
-                  <Route exact path='/Req' element={<Request />}>
-                  </Route>
-    
-                  <Route exact path='/Member' element={<Member />}>
-                  </Route>
+          <Route exact path='/dash' element={<Dashboard />}>
+          </Route>
 
-                  <Route exact path='/upload' element={<Upload />}>
-                  </Route>
-    
-              </Routes>
-         </BrowserRouter>
-          <Launcher  />
-              <Intercom>
-                <Window />
-              </Intercom>
-      </div>
 
-   
+          <Route exact path='/Req' element={<Request />}>
+          </Route>
+
+          <Route exact path='/Member' element={<Member />}>
+          </Route>
+
+          <Route exact path='/upload' element={<Upload />}>
+          </Route>
+
+        </Routes>
+      </BrowserRouter>
+      <Launcher />
+      <Intercom>
+        <Window />
+      </Intercom>
+    </div>
+
+
   );
 }
 
