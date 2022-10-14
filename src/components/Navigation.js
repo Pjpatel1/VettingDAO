@@ -20,12 +20,7 @@ function Navigation() {
   const [address, setAddress] = useState(cookie.get("UDaddress"));
 
   const login = async () => {
-    const uauth = new UAuth({
-      clientID: '4d534cc7-eae0-4116-9171-c5429dd07028',
-      redirectUri: 'http://localhost:3000',
-      scope: 'openid wallet'
-    })
-    const authorization = await uauth.loginWithPopup()
+    const authorization = await authoriz.loginWithPopup()
     console.log(authorization);
     setAuthorization(authorization)
     setAddress(authorization.idToken.sub)
@@ -33,7 +28,14 @@ function Navigation() {
       path: "/",
       maxAge: 5000,
     });
-  }
+  };
+
+  const logout = async () => {
+    await authoriz.logout();
+    cookie.remove("UDaddress");
+    window.location.reload();
+  };
+
   useEffect(() => {
     setAddress(cookie.get('UDaddress'))
     const uauth = new UAuth({
@@ -62,7 +64,10 @@ function Navigation() {
               {
                 address
                   ?
-                  <span><Nav.Link href="#link" onClick={() => login()}>{address}</Nav.Link></span>
+                  <>
+                    <span><Nav.Link href="#link" onClick={() => login()}>{address}</Nav.Link></span>
+                    <button onClick={() => { logout() }}>Logout</button>
+                  </>
                   :
                   <Nav.Link href="#link" onClick={() => login()}>Connect Wallet using UD</Nav.Link>
               }
