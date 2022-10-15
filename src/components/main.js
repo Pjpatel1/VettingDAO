@@ -25,7 +25,7 @@ function mainpage(props) {
                   <h3 className="secondary-text">
                     With <span>VettingDAO </span>you can!
                   </h3>
-                  <Unstoppable />
+                  
                 </div>
                 {/*                  
                   <WorldIDWidget
